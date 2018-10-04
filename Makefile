@@ -170,8 +170,20 @@ ifneq ($(CPU_ONLY), 1)
 	LIBRARIES := cudart cublas curand
 endif
 LIBRARIES += glog gflags protobuf leveldb snappy \
-	lmdb boost_system hdf5_hl hdf5 m \
-	opencv_core opencv_highgui opencv_imgproc
+	lmdb boost_system boost_filesystem hdf5_hl hdf5 m \
+opencv_gapi opencv_stitching opencv_superres opencv_videostab opencv_aruco \
+opencv_bgsegm opencv_bioinspired opencv_ccalib opencv_cudabgsegm opencv_cudacodec \
+opencv_cudafeatures2d opencv_cudaobjdetect opencv_cudaoptflow opencv_cudalegacy \
+opencv_cudastereo opencv_cudawarping opencv_dnn_objdetect opencv_dpm opencv_face \
+opencv_photo opencv_cudaimgproc opencv_cudafilters opencv_freetype opencv_fuzzy \
+opencv_hdf opencv_hfs opencv_img_hash opencv_line_descriptor opencv_optflow opencv_reg \
+opencv_rgbd opencv_saliency opencv_sfm opencv_stereo opencv_structured_light \
+opencv_phase_unwrapping opencv_surface_matching opencv_tracking opencv_video \
+opencv_datasets opencv_text opencv_dnn opencv_plot opencv_xfeatures2d opencv_shape \
+opencv_ml opencv_cudaarithm opencv_ximgproc opencv_calib3d opencv_features2d opencv_highgui \
+opencv_videoio opencv_flann opencv_xobjdetect opencv_imgcodecs opencv_objdetect opencv_xphoto \
+opencv_imgproc opencv_core opencv_cudev
+#opencv_core opencv_highgui opencv_imgproc
 PYTHON_LIBRARIES := boost_python python2.7
 WARNINGS := -Wall -Wno-sign-compare
 
@@ -350,14 +362,14 @@ CXXFLAGS += -MMD -MP
 # Complete build flags.
 COMMON_FLAGS += $(foreach includedir,$(INCLUDE_DIRS),-I$(includedir))
 CXXFLAGS += -pthread -fPIC $(COMMON_FLAGS) $(WARNINGS)
-NVCCFLAGS += -ccbin=$(CXX) -Xcompiler -fPIC $(COMMON_FLAGS)
+NVCCFLAGS += -ccbin=$(CXX) -Xcompiler $(COMMON_FLAGS)
 # mex may invoke an older gcc that is too liberal with -Wuninitalized
 MATLAB_CXXFLAGS := $(CXXFLAGS) -Wno-uninitialized
 LINKFLAGS += -pthread -fPIC $(COMMON_FLAGS) $(WARNINGS)
 
 USE_PKG_CONFIG ?= 0
 ifeq ($(USE_PKG_CONFIG), 1)
-	PKG_CONFIG := $(shell pkg-config opencv --libs)
+	PKG_CONFIG := $(shell pkg-config opencv --libs --cflags)
 else
 	PKG_CONFIG :=
 endif
