@@ -26,10 +26,17 @@ The BVLC reference models are released for unrestricted use.
 
 Please cite Caffe in your publications if it helps your research:
 
-    @article{jia2014caffe,
-      Author = {Jia, Yangqing and Shelhamer, Evan and Donahue, Jeff and Karayev, Sergey and Long, Jonathan and Girshick, Ross and Guadarrama, Sergio and Darrell, Trevor},
-      Journal = {arXiv preprint arXiv:1408.5093},
-      Title = {Caffe: Convolutional Architecture for Fast Feature Embedding},
-      Year = {2014}
-    }
+```bibtex
+@inproceedings{jia2014caffe,
+  title={Caffe: Convolutional architecture for fast feature embedding},
+  author={Jia, Yangqing and Shelhamer, Evan and Donahue, Jeff and Karayev, Sergey and Long, Jonathan and Girshick, Ross and Guadarrama, Sergio and Darrell, Trevor},
+  booktitle={Proceedings of the 22nd ACM international conference on Multimedia},
+  pages={675--678},
+  year={2014},
+  organization={ACM}
+}
+```
+    
 # caffetk1
+
+This patched version of Caffe is fully dedicated to be built on [nVidia Jetson TK1](https://www.nvidia.com/object/jetson-tk1-embedded-dev-kit.html). See the unofficial installation tutorial here: https://github.com/twdragon/caffetk1/blob/master/INSTALL.md
