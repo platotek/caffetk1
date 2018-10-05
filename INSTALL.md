@@ -11,11 +11,13 @@ Check the Caffe issue tracker in case you need help: https://github.com/BVLC/caf
 
 ### Prerequisites
 
+To avoid `ld` linker errors you may symbolize `libhdf5` and `libhdf5_hl` from their install directory to `/usr/local/lib`.
+
 In addition to prerequisites described [here](http://caffe.berkeleyvision.org/installation.html#prerequisites) we are also need:
 
 - `CUDA`. Please install [official CUDA 6.5 binary from nVidia](https://developer.nvidia.com/cuda-zone)
 - `CUDNN for Jetson and CUDA 6.5`. Please [get one from nVidia](https://developer.nvidia.com/cudnn) using your nVidia Developer account.
-- `Google Protobuf v3.0.0`. It needs to be compiled manually. Note that the code cloned from official repository under the `3.0.0` tag doesn't build due to changes in Google.Test `gmock` repositories. You can fix this yourself or use pre-patched version from unofficial repository https://robotics.bmstu.ru/gitlab/jetson-patches/protobuf-3.0.0
+- `Google Protobuf v3.0.0`. It needs to be compiled manually. Note that the code cloned from official repository under the `3.0.0` tag doesn't build due to changes in Google.Test `gmock` repositories. You can fix this yourself or use pre-patched version from unofficial repository https://robotics.bmstu.ru/gitlab/jetson-patches/protobuf-3.0.0 (requires some Python dependencies to be installed).
 - `OpenCV 3.1.0` with some patches. It needs to be compiled too. You may use the [instructions from official OpenCV knowledge base](https://docs.opencv.org/3.3.0/d6/d15/tutorial_building_tegra_cuda.html) or grab pre-patched code from https://robotics.bmstu.ru/gitlab/jetson-patches/OpenCV-3.1.0
 
 ### Building
